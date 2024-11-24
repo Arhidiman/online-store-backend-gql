@@ -5,7 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main-serve": "echo \"Error: no test specified\" && exit 1",
+    "auth-serve": "echo \"Error: no test specified\" && exit 1",
+    "gateway": "nodemon gateway.js",
+    "full-dev": "concurrently  \"node services/usersService.js\" \"node services/productsService.js\" \"node gateway.js\""
   },
   "keywords": [],
   "author": "",
@@ -17,6 +21,10 @@
     "@apollo/subgraph": "^2.9.3",
     "gql": "^1.1.2",
     "graphql": "^16.9.0",
-    "graphql-tag": "^2.12.6"
+    "graphql-tag": "^2.12.6",
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
   }
 }
