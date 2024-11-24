@@ -1,0 +1,21 @@
+extend schema
+    @link(
+        url: "https://specs.apollo.dev/federation/v2.9"
+        import: ["@key", "@shareable", "@external"]
+    )
+
+type Product 
+    @key(fields: "id") {
+    id: Int!
+    name: String
+}
+
+extend type User @key(fields: "id") {
+    id: ID! @external
+    surname: String
+}
+
+type Query {
+    products: [Product]
+    singleProduct(id: Int!): Product
+}
