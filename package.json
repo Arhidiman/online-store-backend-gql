@@ -8,8 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "main-serve": "echo \"Error: no test specified\" && exit 1",
     "auth-serve": "echo \"Error: no test specified\" && exit 1",
-    "gateway": "nodemon gateway.js",
-    "full-dev": "concurrently  \"node services/usersService.js\" \"node services/productsService.js\" \"node gateway.js\""
+    "gateway": "nodemon",
+    "full-dev": "concurrently  \"node services/usersService.js\" \"node services/productsService.js\" \"nodemon ts-node-esm gateway.ts\""
   },
   "keywords": [],
   "author": "",
@@ -19,12 +19,20 @@
     "@apollo/gateway": "^2.9.3",
     "@apollo/server": "^4.11.2",
     "@apollo/subgraph": "^2.9.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
     "gql": "^1.1.2",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
     "nodemon": "^3.1.7"
   },
   "devDependencies": {
-    "concurrently": "^9.1.0"
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "concurrently": "^9.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
