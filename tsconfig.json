@@ -12,7 +12,7 @@
       "forceConsistentCasingInFileNames": true,
       "moduleResolution": "node"
     },
-    "include": ["./**/*.ts", "services/productsService.ts"],
+    "include": ["./**/*.ts", "services/main/index.ts"],
     "exclude": ["node_modules", "dist"]
   }
   

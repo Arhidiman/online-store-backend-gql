@@ -8,6 +8,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser'
 
+import { ProductsController } from './controllers/ProductsController.ts'
 
 
 const products = [
@@ -47,10 +48,15 @@ const typeDefs = gql`
 
 const resolvers = {
     Query: {
-      products: () => products,
-      singleProduct: (_: any, { id }: {id: number}) => products.find(product => product.id === id)
+    //   products: () => products,
+    //   singleProduct: (_: any, { id }: {id: number}) => products.find(product => product.id === id)
+        ...ProductsController
     }
   }
+
+
+console.log(ProductsController, 'productsController')
+console.log(resolvers.Query)
 
 const server = new ApolloServer({
     schema: buildSubgraphSchema({

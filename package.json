@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "main-serve": "echo \"Error: no test specified\" && exit 1",
+    "main-serve": "npx ts-node-esm services/main/index.ts",
     "auth-serve": "npx ts-node-esm services/usersService.ts",
     "products": "npx ts-node-esm services/productsService.ts",
     "gateway": "nodemon"
