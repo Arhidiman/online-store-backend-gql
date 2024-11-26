@@ -7,9 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "main-serve": "echo \"Error: no test specified\" && exit 1",
-    "auth-serve": "echo \"Error: no test specified\" && exit 1",
-    "gateway": "nodemon",
-    "full-dev": "concurrently  \"node services/usersService.js\" \"node services/productsService.js\" \"nodemon ts-node-esm gateway.ts\""
+    "auth-serve": "npx ts-node-esm services/usersService.ts",
+    "products": "npx ts-node-esm services/productsService.ts",
+    "gateway": "nodemon"
   },
   "keywords": [],
   "author": "",

@@ -1,11 +1,25 @@
 import { ApolloServer } from '@apollo/server';
 import { buildSubgraphSchema } from '@apollo/subgraph';
-import { startStandaloneServer } from '@apollo/server/standalone';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import gql from 'graphql-tag';
+import http from 'http';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser'
+
+
 
 const products = [
     {name: 'phone', id: 1}, {name: 'cat', id: 5}
 ];
+
+
+const PORT = 7000
+
+const app = express();
+const httpServer = http.createServer(app);
+  
 
 const typeDefs = gql`
     extend schema
@@ -34,8 +48,7 @@ const typeDefs = gql`
 const resolvers = {
     Query: {
       products: () => products,
-      users: () => users,
-      singleProduct: (_, { id }) => products.find(product => product.id === id)
+      singleProduct: (_: any, { id }: {id: number}) => products.find(product => product.id === id)
     }
   }
 
@@ -44,15 +57,18 @@ const server = new ApolloServer({
         typeDefs,
         resolvers,
     }),
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-const { url } = await startStandaloneServer(server, {
-    listen: { port: 7000 },
-    cors: {
-        origin: ['http://localhost:10000', 'http://localhost:7000'],
-        methods: ['GET', 'POST', 'UPDATE', 'PUT', 'DELETE'],
-        credentials: true,
-    }
-});
+await server.start();
 
-console.log(`🚀  Server ready at: ${url}`);
+app.use(
+    cors(),
+    bodyParser.json(),
+    expressMiddleware(server),
+)
+
+await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
+
+
+console.log(`🚀  Server ready at: ${PORT}`);
