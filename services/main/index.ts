@@ -7,6 +7,9 @@ import http from 'http';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser'
+import { dbClient } from './db/dbCLient.ts';
+
+
 
 import { ProductsController } from './controllers/ProductsController.ts'
 
@@ -14,6 +17,11 @@ import { ProductsController } from './controllers/ProductsController.ts'
 const products = [
     {name: 'phone', id: 1}, {name: 'cat', id: 5}
 ];
+
+
+const res = await dbClient.query('SELECT * FROM CATEGORIES')
+
+console.log(res.rows)
 
 
 const PORT = 7000
