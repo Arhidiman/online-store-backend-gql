@@ -9,21 +9,28 @@ import cors from 'cors';
 import bodyParser from 'body-parser'
 import { dbClient } from './db/dbCLient.ts';
 import { schema } from './schema.ts';
-
-
-
 import { productsController } from './controllers/ProductsController.ts'
 import { categoriesController } from './controllers/CategoriesController/CategoriesController.ts';
+import { Sequelize } from 'sequelize';
+import { dbConfig } from './db/config.ts';
 
-const products = [
-    {name: 'phone', id: 1}, {name: 'cat', id: 5}
-];
+// Option 3: Passing parameters separately (other dialects)
+
+const { database, user, password} = dbConfig
+
+const sequelize = new Sequelize(database, user, password, {
+  host: 'localhost',
+  dialect: 'postgres',
+  logging: (...msg) => console.log(msg)
+})
 
 
-// const res = await dbClient.query('SELECT * FROM CATEGORIES')
-
-// console.log(res.rows)
-
+try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 
 const PORT = 7000
 

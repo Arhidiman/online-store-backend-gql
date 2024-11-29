@@ -5,10 +5,10 @@ class CategoriesModel {
 
     async getAll() {
         
-        const categories =  (await dbClient.query(queries.categories())).rows
+        // const categories =  (await dbClient.query(queries.categories())).rows
 
-        console.log(categories)
-        return categories
+        // console.log(categories)
+        return [{category_id: '1', name: 'compucter'}]
 
     }
 
