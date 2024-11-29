@@ -11,7 +11,7 @@ import { dbClient } from './db/dbCLient.ts';
 import { schema } from './schema.ts';
 import { productsController } from './controllers/ProductsController.ts'
 import { categoriesController } from './controllers/CategoriesController/CategoriesController.ts';
-import { Sequelize } from 'sequelize';
+import { Sequelize, Model, DataTypes } from 'sequelize';
 import { dbConfig } from './db/config.ts';
 
 // Option 3: Passing parameters separately (other dialects)
@@ -32,35 +32,33 @@ try {
     console.error('Unable to connect to the database:', error);
   }
 
+const Category = sequelize.define('categories', {
+
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    category_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    }
+
+},   { tableName: 'categories', timestamps: false } )
+
+
+await sequelize.sync()
+console.log('sequilize successfully syncronized !')
+
+const categories = await Category.findAll({ raw: true })
+
+console.log(categories, 'categories find')
+
 const PORT = 7000
 
 const app = express();
 const httpServer = http.createServer(app);
-  
 
-// const typeDefs = gql`
-//     extend schema
-//         @link(
-//             url: "https://specs.apollo.dev/federation/v2.9"
-//             import: ["@key", "@shareable", "@external"]
-//         )
-
-//         type Product 
-//             @key(fields: "id") {
-//             id: Int!
-//             name: String
-//         }
-
-//         extend type User @key(fields: "id") {
-//             id: ID! @external
-//             surname: String
-//         }
-
-//         type Query {
-//             products: [Product]
-//             singleProduct(id: Int!): Product
-//         }
-// `
 
 const resolvers = {
     Query: {
