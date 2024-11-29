@@ -8,20 +8,21 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser'
 import { dbClient } from './db/dbCLient.ts';
+import { schema } from './schema.ts';
 
 
 
-import { ProductsController } from './controllers/ProductsController.ts'
-
+import { productsController } from './controllers/ProductsController.ts'
+import { categoriesController } from './controllers/CategoriesController/CategoriesController.ts';
 
 const products = [
     {name: 'phone', id: 1}, {name: 'cat', id: 5}
 ];
 
 
-const res = await dbClient.query('SELECT * FROM CATEGORIES')
+// const res = await dbClient.query('SELECT * FROM CATEGORIES')
 
-console.log(res.rows)
+// console.log(res.rows)
 
 
 const PORT = 7000
@@ -30,45 +31,46 @@ const app = express();
 const httpServer = http.createServer(app);
   
 
-const typeDefs = gql`
-    extend schema
-        @link(
-            url: "https://specs.apollo.dev/federation/v2.9"
-            import: ["@key", "@shareable", "@external"]
-        )
+// const typeDefs = gql`
+//     extend schema
+//         @link(
+//             url: "https://specs.apollo.dev/federation/v2.9"
+//             import: ["@key", "@shareable", "@external"]
+//         )
 
-        type Product 
-            @key(fields: "id") {
-            id: Int!
-            name: String
-        }
+//         type Product 
+//             @key(fields: "id") {
+//             id: Int!
+//             name: String
+//         }
 
-        extend type User @key(fields: "id") {
-            id: ID! @external
-            surname: String
-        }
+//         extend type User @key(fields: "id") {
+//             id: ID! @external
+//             surname: String
+//         }
 
-        type Query {
-            products: [Product]
-            singleProduct(id: Int!): Product
-        }
-`
+//         type Query {
+//             products: [Product]
+//             singleProduct(id: Int!): Product
+//         }
+// `
 
 const resolvers = {
     Query: {
     //   products: () => products,
     //   singleProduct: (_: any, { id }: {id: number}) => products.find(product => product.id === id)
-        ...ProductsController
+        // ...ProductsController
+        ...categoriesController
     }
   }
 
 
-console.log(ProductsController, 'productsController')
-console.log(resolvers.Query)
+console.log(categoriesController, 'categoriesController')
+// console.log(resolvers.Query)
 
 const server = new ApolloServer({
     schema: buildSubgraphSchema({
-        typeDefs,
+        typeDefs: schema,
         resolvers,
     }),
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],

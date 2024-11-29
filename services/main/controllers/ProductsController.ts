@@ -1,6 +1,6 @@
 import productsModel from "../models/ProductsModel.ts"
 
-export const ProductsController = {
+export const productsController = {
 
     products(): {name: string, id: number}[] {
 
