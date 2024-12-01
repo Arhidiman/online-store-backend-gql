@@ -9,11 +9,22 @@ export const schema = gql`
 
         type Query {
             categories: [Category]
+            products: [Product]
         }
 
         type Category {
-            category_id: ID!
+            id: ID!
             name: String
+        }
+
+        type Product {
+            id: ID!
+            name: String,
+            price: Int,
+            image: String,
+            discount: Float,
+            in_stock: Int,
+            rating: Int,
         }
 
 `

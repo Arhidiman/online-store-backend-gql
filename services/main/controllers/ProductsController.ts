@@ -1,16 +1,15 @@
-import productsModel from "@main/models/ProductsModel.ts"
+import ProductsModel from "../models/ProductsModel/ProductsModel.ts"
+import type { TProduct } from "..//models/ProductsModel/ProductsModel.ts"
 
 export const productsController = {
 
-    products(): {name: string, id: number}[] {
-
-        return productsModel.products()            
-
+    async products(): Promise<TProduct[]> {
+        return ProductsModel.findAll()
     },
 
     singleProduct(_: any, { id }: {id: number}): {name: string, id: number} | undefined {
         if (!id) throw new Error('Отсутствует id пользователя')
-        return productsModel.singleProduct(id)
+        return ProductsModel.singleProduct(id)
     }
 }
 

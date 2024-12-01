@@ -14,9 +14,9 @@ await sequelizeInstance.sync()
 console.log('sequilize successfully syncronized !')
 
 
-// try {
-//   await sequelizeInstance.authenticate();
-//   console.log('Connection has been established successfully.');
-// } catch (error) {
-//   console.error('Unable to connect to the database:', error);
-// }
+try {
+  await sequelizeInstance.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}

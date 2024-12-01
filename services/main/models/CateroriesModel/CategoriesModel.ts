@@ -1,9 +1,14 @@
 import { Category } from "./Category.ts";
 
+export type TCategory = {
+    id: Number, 
+    name: string
+}
+
 class CategoriesModel {
-    async getAll() {
+    async getAll(): Promise<TCategory[]> {
         const categories = await Category.findAll({ raw: true })
-        return categories
+        return categories as unknown as TCategory[]
     }
 }
 

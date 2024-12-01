@@ -8,8 +8,8 @@ export const Category = sequelizeInstance.define('categories', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    category_id: {
-        type: DataTypes.INTEGER,
+    id: {
+        type: DataTypes.UUID,
         allowNull: false,
         primaryKey: true
     }
