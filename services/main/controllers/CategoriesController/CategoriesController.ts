@@ -1,5 +1,5 @@
 import categoriesModel from "../../models/CateroriesModel/CategoriesModel.ts"
-
+import { Category } from "../../models/CateroriesModel/Category.ts"
 
 
 export const categoriesController = {

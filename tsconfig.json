@@ -10,7 +10,13 @@
       "esModuleInterop": true,
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
-      "moduleResolution": "node"
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "baseUrl": "./services", // Указывает корневую папку для относительных путей
+    "paths": {
+      "@main/*": ["main/*"],
+      "@auth/*": ["auth/*"]
+    }
     },
     "include": ["./**/*.ts", "services/main/index.ts"],
     "exclude": ["node_modules", "dist"]

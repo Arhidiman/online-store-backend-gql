@@ -1,4 +1,4 @@
-import productsModel from "../models/ProductsModel.ts"
+import productsModel from "@main/models/ProductsModel.ts"
 
 export const productsController = {
 

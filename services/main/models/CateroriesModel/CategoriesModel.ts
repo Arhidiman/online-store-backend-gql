@@ -1,18 +1,10 @@
-import { queries } from "./queries.ts";
-import { dbClient } from "../../db/dbCLient.ts";
+import { Category } from "./Category.ts";
 
 class CategoriesModel {
-
     async getAll() {
-        
-        // const categories =  (await dbClient.query(queries.categories())).rows
-
-        // console.log(categories)
-        return [{category_id: '1', name: 'compucter'}]
-
+        const categories = await Category.findAll({ raw: true })
+        return categories
     }
-
 }
-
 
 export default new CategoriesModel()
