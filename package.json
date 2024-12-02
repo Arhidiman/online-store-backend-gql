@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "main-serve": "npx ts-node-esm services/main/index.ts",
+    "main-serve": "nodemon --config nodemon.main.json",
     "auth-serve": "npx ts-node-esm services/usersService.ts",
     "products": "npx ts-node-esm services/productsService.ts",
     "full-dev": "concurrently  \"ts-node-esm  services/main/index.ts\" \"ts-node-esm  services/auth/index.ts\" \"ts-node-esm gateway.ts\"",
@@ -29,7 +29,8 @@
     "nodemon": "^3.1.7",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.5",

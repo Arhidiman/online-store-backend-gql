@@ -15,7 +15,6 @@ const PORT = 7000
 const app = express();
 const httpServer = http.createServer(app);
 
-
 const resolvers = {
     Query: {
         ...categoriesController,
