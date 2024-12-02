@@ -10,7 +10,8 @@ export const schema = gql`
         type Query {
             categories: [Category]
             products: [Product],
-            product(id: ID!): Product
+            product(id: ID!): Product,
+            sortedProducts(in_stock: Boolean, discount: Boolean, price: String, rating: String): [Product]
         }
 
         type Category {
