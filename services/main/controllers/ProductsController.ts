@@ -1,5 +1,6 @@
 import ProductsModel from "../models/ProductsModel/ProductsModel.ts"
 import type { TProduct } from "..//models/ProductsModel/ProductsModel.ts"
+import type { Model } from "sequelize"
 
 export const productsController = {
 
@@ -7,9 +8,9 @@ export const productsController = {
         return ProductsModel.findAll()
     },
 
-    singleProduct(_: any, { id }: {id: number}): {name: string, id: number} | undefined {
+    async product(_: any, { id }: {id: number}): Promise<Model<TProduct> | null> {
         if (!id) throw new Error('Отсутствует id пользователя')
-        return ProductsModel.singleProduct(id)
+        return await ProductsModel.findOne(id)
     }
 }
 

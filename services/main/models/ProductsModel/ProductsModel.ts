@@ -1,4 +1,5 @@
 import { Product } from "./Product.ts"
+import type { Model } from "sequelize"
 
 const mockProducts = [{name: 'phone', id: 1}, {name: 'table', id: 5}]
 
@@ -18,9 +19,11 @@ class ProductsModel {
         return await Product.findAll({ raw: true }) as unknown as TProduct[]
     }
 
-    singleProduct(id: number): {name: string, id: number} | undefined {
-        return mockProducts.find(product => product.id === id)
+    async findOne(id: number): Promise<Model<TProduct> | null> {
+        return await Product.findOne({raw: true, where: { id }})
     }
+
+
 
 }
 
