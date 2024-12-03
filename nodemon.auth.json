@@ -1,0 +1,6 @@
+{
+    "watch": ["./services/auth"],
+    "ext": "ts",
+    "ignore": ["dist"],
+    "exec": "ts-node-esm -r tsconfig-paths/register services/auth/index.ts"
+}

@@ -16,7 +16,7 @@ console.log('sequilize successfully syncronized !')
 
 try {
   await sequelizeInstance.authenticate();
-  console.log('Connection has been established successfully.');
+  console.log('Main service connection has been established successfully.');
 } catch (error) {
   console.error('Unable to connect to the database:', error);
 }

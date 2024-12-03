@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "main-serve": "nodemon --config nodemon.main.json",
-    "auth-serve": "npx ts-node-esm services/usersService.ts",
+    "auth-serve": "nodemon --config nodemon.auth.json",
     "products": "npx ts-node-esm services/productsService.ts",
     "full-dev": "concurrently  \"ts-node-esm  services/main/index.ts\" \"ts-node-esm  services/auth/index.ts\" \"ts-node-esm gateway.ts\"",
     "gateway": "nodemon"
