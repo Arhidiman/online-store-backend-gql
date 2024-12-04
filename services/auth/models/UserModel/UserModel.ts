@@ -17,6 +17,10 @@ class UserModel {
         return await User.findOne({raw: true, where: { username, password }})
     }
 
+    async create(username: string, password: string): Promise<Model<TUser> | null> {
+        return await User.create({ username, password, user_role: 'USER'})
+    }
+
 }
 
 

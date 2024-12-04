@@ -9,10 +9,19 @@ interface IAuth {
 }
 
 export const userController = {
-
-
     auth: async (_: any, { username, password }: IAuth): Promise<Model<TUser> | null> => {
         return await UserModel.findOne(username, password)
+    },
+
+    signIn: async (_: any, { username, password }: IAuth): Promise<Model<TUser> | null | undefined> => {
+        try {
+            return await UserModel.create(username, password)
+
+        } catch(err: any) {
+
+            console.log(`Ошибка при регистрации пользователя\n${err.message}`)
+
+        }
     }
 
 }

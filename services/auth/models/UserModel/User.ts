@@ -7,8 +7,9 @@ export const User = sequelizeInstance.define('store_users',
     {
         id: {
             type: DataTypes.UUID,
-            allowNull: false,
-            primaryKey: true
+            allowNull: true,
+            primaryKey: true,
+            autoIncrement: true
         },
         username: {
             type: DataTypes.STRING,
@@ -21,6 +22,7 @@ export const User = sequelizeInstance.define('store_users',
         created_at: {
             type: DataTypes.TIME,
             allowNull: false,
+            defaultValue: DataTypes.NOW
         },
         user_role: {
             type: DataTypes.STRING,
@@ -28,7 +30,7 @@ export const User = sequelizeInstance.define('store_users',
         },
         jwt_token: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },        
 
     },
