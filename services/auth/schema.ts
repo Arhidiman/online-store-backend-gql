@@ -8,7 +8,7 @@ export const schema = gql`
         )
 
         type Query {
-            auth: User
+            auth(username: String!, password: String!): User
         }
      
         type User {

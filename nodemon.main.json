@@ -2,6 +2,6 @@
     "watch": ["./services/main"],
     "ext": "ts",
     "ignore": ["dist"],
-    "exec": "ts-node-esm -r tsconfig-paths/register services/main/index.ts"
+    "exec": "node --loader ts-node/esm services/main/index.ts"
 }
   

@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 
-import { sequelizeInstance } from "../../db/sequelizeInstance";
+import { sequelizeInstance } from "../../db/sequelizeInstance.ts";
 
 
 export const User = sequelizeInstance.define('store_users',
@@ -33,6 +33,6 @@ export const User = sequelizeInstance.define('store_users',
 
     },
     {
-        tableName: 'store_users'
+        tableName: 'store_users', timestamps: false
     }
 )
