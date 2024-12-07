@@ -3,7 +3,6 @@ import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
 
 export const Product = sequelizeInstance.define('products',
     {
-
         id: {
             type: DataTypes.UUID,
             primaryKey: true
@@ -32,7 +31,6 @@ export const Product = sequelizeInstance.define('products',
             type: DataTypes.DOUBLE,
             allowNull: false
         },
-
     },
     {
         tableName: 'products', timestamps: false
