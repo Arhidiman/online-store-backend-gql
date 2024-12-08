@@ -1,9 +1,13 @@
-import type { Model } from "sequelize";
+import OrdersModel from "../models/OrdersModel/OrdersModel.ts"
 
-class OrdersController {
+export const OrdersController = {
 
-    createOrder(_: any, user_id: number) {
-
+    async createOrder(_: any, { user_id }: { user_id: number }) {
+        try {
+            return await OrdersModel.create(user_id)
+        } catch(err: any) {
+            throw new Error(`Ошибка при создании заказа. ${err.message}`)
+        }
     }
-
+    
 }

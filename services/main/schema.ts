@@ -11,13 +11,14 @@ export const schema = gql`
             categories: [Category]
             products: [Product],
             product(id: ID!): Product,
-            sortedProducts(in_stock: Boolean, discount: Boolean, price: String, rating: String): [Product]
+            sortedProducts(in_stock: Boolean, discount: Boolean, price: String, rating: String): [Product],
+            createOrder(user_id: ID!): Order
         }
 
         type Category {
             id: ID!
             name: String
-        }
+        },
 
         type Product {
             id: ID!
@@ -27,6 +28,11 @@ export const schema = gql`
             discount: Float,
             in_stock: Int,
             rating: Int,
+        },
+
+        type Order {
+            id: ID!,
+            user_id: ID!
         }
 
 `

@@ -1,10 +1,10 @@
 import ProductsModel from "../models/ProductsModel/ProductsModel.ts"
-import type { TProduct, TSortParams } from "..//models/ProductsModel/ProductsModel.ts"
+import type { TProduct, TSortParams } from "../models/ProductsModel/ProductsModel.ts"
 import type { Model } from "sequelize"
 
 
 
-export const productsController = {
+export const ProductsController = {
 
     async products(): Promise<TProduct[]> {
         return ProductsModel.findAll()

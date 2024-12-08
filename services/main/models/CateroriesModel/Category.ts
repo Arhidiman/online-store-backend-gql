@@ -6,7 +6,8 @@ export const Category = sequelizeInstance.define('categories', {
 
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     id: {
         type: DataTypes.UUID,

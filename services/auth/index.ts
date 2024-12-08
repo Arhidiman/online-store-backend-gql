@@ -18,9 +18,6 @@ const PORT = 8000
 const app = express();
 const httpServer = http.createServer(app);
 
-
-const getUserById = (id: number) => users.find(user => user.id === id);
-
 const resolvers = {
     Query: {
         ...userController

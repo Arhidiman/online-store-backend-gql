@@ -7,8 +7,9 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser'
 import { schema } from './schema.ts';
-import { categoriesController } from './controllers/CategoriesController.ts';
-import { productsController } from './controllers/ProductsController.ts';
+import { CategoriesController } from './controllers/CategoriesController.ts';
+import { ProductsController } from './controllers/ProductsController.ts';
+import { OrdersController } from './controllers/OrdersController.ts';
 
 const PORT = 7000
 
@@ -17,8 +18,9 @@ const httpServer = http.createServer(app);
 
 const resolvers = {
     Query: {
-        ...categoriesController,
-        ...productsController
+        ...CategoriesController,
+        ...ProductsController,
+        ...OrdersController
     }
   }
 

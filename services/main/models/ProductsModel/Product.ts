@@ -5,7 +5,8 @@ export const Product = sequelizeInstance.define('products',
     {
         id: {
             type: DataTypes.UUID,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,

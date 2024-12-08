@@ -1,7 +1,7 @@
 import categoriesModel from "../models/CateroriesModel/CategoriesModel.ts"
 import type { TCategory } from "../models/CateroriesModel/CategoriesModel.ts"
 
-export const categoriesController = {
+export const CategoriesController = {
     categories: async (): Promise<TCategory[] | undefined> => {
         try {
             return await categoriesModel.getAll()
