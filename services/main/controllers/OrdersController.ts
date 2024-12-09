@@ -1,17 +1,12 @@
 import OrdersModel from "../models/OrdersModel/OrdersModel.ts"
-import OrderItemsModel from "../models/OrderItemsModel/OrderItemsModel.ts"
-import type { TOrderItem } from "../models/OrderItemsModel/OrderItemsModel.ts"
+import type { CreateOrderDto } from "../dto/CreateOrderDto.ts"
+
 
 export const OrdersController = {
 
-    async createOrder(_: any, { user_id, product_id, product_count }: { user_id: number, product_id: number, product_count: number }) {
+    async createOrder(_: any, { user_id, product_id, product_count }: CreateOrderDto) {
         try {
-            const order = await OrdersModel.create(user_id)
-            const { id: order_id } = order
-            const orderItem = await OrderItemsModel.create({ order_id, product_id, product_count } as TOrderItem)
-
-            return order
-
+            return OrdersModel.createNew({ user_id, product_id, product_count })
         } catch(err: any) {
             throw new Error(`Ошибка при создании заказа. ${err.message}`)
         }
