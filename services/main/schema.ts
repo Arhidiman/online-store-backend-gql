@@ -13,8 +13,13 @@ export const schema = gql`
             product(id: ID!): Product,
             sortedProducts(in_stock: Boolean, discount: Boolean, price: String, rating: String): [Product],
             getOrder(id: Int!): Order,
+            
+        }
+
+        type Mutation {
             createOrder(user_id: ID!, product_id: Int, product_count: Int!): Order,
             addOrderItem(order_id: Int!, product_id: Int!, product_count: Int!): OrderItem
+            deleteOrder(id: ID!): ID!
         }
 
         type Category {

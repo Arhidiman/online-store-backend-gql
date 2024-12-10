@@ -20,7 +20,10 @@ const resolvers = {
     Query: {
         ...CategoriesController,
         ...ProductsController,
-        ...OrdersController
+        ...OrdersController.Queries
+    },
+    Mutation: {
+        ...OrdersController.Mutations
     }
   }
 
