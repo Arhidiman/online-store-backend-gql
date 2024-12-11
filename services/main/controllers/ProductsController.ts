@@ -1,6 +1,7 @@
 import ProductsModel from "../models/ProductsModel/ProductsModel.ts"
-import type { TProduct, TSortParams } from "../models/ProductsModel/ProductsModel.ts"
+import type { TProduct } from "../models/ProductsModel/ProductsModel.ts"
 import type { Model } from "sequelize"
+import type { ProductsFiltersDto } from "../dto/Products/ProductsFiltersDto.ts"
 
 
 
@@ -15,9 +16,9 @@ export const ProductsController = {
         return await ProductsModel.findOne(id)
     },
 
-    async sortedProducts(_: any, { in_stock, discount, price, rating }: TSortParams): Promise<Model<TProduct>[] | null | undefined> {
+    async sortedProducts(_: any, filters: ProductsFiltersDto): Promise<Model<TProduct>[] | null | undefined> {
         try {
-            return await ProductsModel.sortedProducts({ in_stock, discount, price, rating })
+            return await ProductsModel.sortedProducts(filters)
         } catch(err: any) {
             console.error(err.message, 'Ошибка при получении фильтрованного списка товаров')
         }

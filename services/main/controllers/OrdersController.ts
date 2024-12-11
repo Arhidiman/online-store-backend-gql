@@ -1,8 +1,8 @@
 import OrdersModel from "../models/OrdersModel/OrdersModel.ts"
-import type { GetOrderDto } from "../dto/GetOrderDto.ts"
-import type { CreateOrderDto } from "../dto/CreateOrderDto.ts"
-import type { AddOrderItemDto } from "../dto/AddOrderItemDto.ts"
-import type { DeleteOrderDto } from "../dto/DeleteOrderDto.ts"
+import type { GetOrderDto } from "../dto/Orders/GetOrderDto.ts"
+import type { CreateOrderDto } from "../dto/Orders/CreateOrderDto.ts"
+import type { AddOrderItemDto } from "../dto/Orders/AddOrderItemDto.ts"
+import type { DeleteOrderDto } from "../dto/Orders/DeleteOrderDto.ts"
 import type { TOrderItem } from "../models/OrderItemsModel/OrderItemsModel.ts"
 import type { TOrder } from "../models/OrdersModel/OrdersModel.ts"
 

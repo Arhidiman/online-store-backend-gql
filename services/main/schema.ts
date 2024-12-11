@@ -11,7 +11,7 @@ export const schema = gql`
             categories: [Category]
             products: [Product],
             product(id: ID!): Product,
-            sortedProducts(in_stock: Boolean, discount: Boolean, price: String, rating: String): [Product],
+            sortedProducts(price: Int, in_stock: Boolean, discount: Boolean, priceSort: String, ratingSort: String, showCount: Int): [Product],
             getOrder(id: Int!): Order,
             
         }

@@ -1,6 +1,7 @@
 import { Product } from "./Product.ts"
 import type { Model } from "sequelize"
 import  { Op } from "sequelize"
+import type { ProductsFiltersDto } from "../../dto/Products/ProductsFiltersDto.ts"
 
 const mockProducts = [{name: 'phone', id: 1}, {name: 'table', id: 5}]
 
@@ -14,13 +15,6 @@ export type TProduct = {
     rating: number,
 }
 
-export type TSortParams = {
-    in_stock: boolean,
-    discount: boolean,
-    price: 'ASC' | 'DESC'
-    rating: 'ASC' | 'DESC'
-}
-
 
 class ProductsModel {
 
@@ -32,9 +26,9 @@ class ProductsModel {
         return await Product.findOne({raw: true, where: { id }})
     }
 
+    async sortedProducts({ price, in_stock, discount, priceSort, ratingSort, showCount}: ProductsFiltersDto): Promise<Model<TProduct>[] | null> {
 
-    async sortedProducts({ in_stock, discount, price, rating}: TSortParams): Promise<Model<TProduct>[] | null> {
-
+        const price_filter = price ?  { [Op.lt]: price } : { [Op.not]: null }
         const in_stock_filter = !in_stock ?  { [Op.or]: { [Op.is]: null, [Op.gt]: 0 } } : { [Op.not]: null }
         const discount_filter = !discount ?  { [Op.or]: { [Op.is]: null, [Op.gt]: 0 } } : { [Op.not]: null }
 
@@ -42,10 +36,12 @@ class ProductsModel {
         return await Product.findAll({
             raw: true, 
             where: {
+                price: price_filter,
                 in_stock: in_stock_filter,
                 discount: discount_filter
             },
-            order: [['price', price || 'ASC'], ['rating',  rating || 'ASC']]
+            order: [['price', priceSort || 'ASC'], ['rating',  ratingSort || 'ASC']],
+            limit: showCount
         })
     }
 
