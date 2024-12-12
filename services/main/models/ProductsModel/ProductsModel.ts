@@ -1,5 +1,5 @@
 import { Product } from "./Product.ts"
-import type { Model } from "sequelize"
+import type { Model, Order } from "sequelize"
 import  { Op } from "sequelize"
 import type { ProductsFiltersDto } from "../../dto/Products/ProductsFiltersDto.ts"
 
@@ -32,6 +32,9 @@ class ProductsModel {
         const in_stock_filter = !in_stock ?  { [Op.or]: { [Op.is]: null, [Op.gt]: 0 } } : { [Op.not]: null }
         const discount_filter = !discount ?  { [Op.or]: { [Op.is]: null, [Op.gt]: 0 } } : { [Op.not]: null }
 
+        const order = []
+        priceSort &&  order.push(['price', priceSort])
+        ratingSort &&  order.push(['rating', ratingSort])
 
         return await Product.findAll({
             raw: true, 
@@ -40,7 +43,7 @@ class ProductsModel {
                 in_stock: in_stock_filter,
                 discount: discount_filter
             },
-            order: [['price', priceSort || 'ASC'], ['rating',  ratingSort || 'ASC']],
+            order: order as Order,
             limit: showCount
         })
     }
