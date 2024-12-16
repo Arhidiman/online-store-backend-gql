@@ -26,7 +26,7 @@ class ProductsModel {
         return await Product.findOne({raw: true, where: { id }})
     }
 
-    async sortedProducts({ price, in_stock, discount, priceSort, ratingSort, showCount}: ProductsFiltersDto): Promise<Model<TProduct>[] | null> {
+    async sortedProducts({ price, in_stock, discount, priceSort, ratingSort, showCount, category}: ProductsFiltersDto): Promise<Model<TProduct>[] | null> {
 
         const price_filter = price ?  { [Op.lt]: price } : { [Op.not]: null }
         const in_stock_filter = !in_stock ?  { [Op.or]: { [Op.is]: null, [Op.gt]: 0 } } : { [Op.not]: null }
@@ -41,7 +41,8 @@ class ProductsModel {
             where: {
                 price: price_filter,
                 in_stock: in_stock_filter,
-                discount: discount_filter
+                discount: discount_filter,
+                category_id: category || { [Op.not]: null}
             },
             order: order as Order,
             limit: showCount

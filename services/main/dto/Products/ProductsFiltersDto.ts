@@ -4,5 +4,6 @@ export type ProductsFiltersDto = {
     discount: boolean,
     priceSort: 'ASC' | 'DESC'
     ratingSort: 'ASC' | 'DESC',
-    showCount: number
+    showCount: number,
+    category: number
 }
