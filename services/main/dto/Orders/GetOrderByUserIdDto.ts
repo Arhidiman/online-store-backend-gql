@@ -1,0 +1,1 @@
+export type GetOrderByUserIdDto = { user_id: number, is_current: boolean }

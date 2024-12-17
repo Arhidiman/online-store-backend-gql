@@ -19,6 +19,10 @@ export const Order = sequelizeInstance.define('orders',
                 key: 'id',
                 deferrable: Deferrable.INITIALLY_IMMEDIATE()
             }
+        },
+        is_current: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true
         }
     },
 

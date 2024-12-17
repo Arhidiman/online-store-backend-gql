@@ -22,6 +22,7 @@ export const schema = gql`
                 ): [Product],
                 
             getOrder(id: Int!): Order,
+            getCurrentOrderByUserId(user_id: ID!): Order
             
         }
 
