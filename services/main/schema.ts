@@ -21,14 +21,15 @@ export const schema = gql`
                     category: ID
                 ): [Product],
                 
-            getOrder(id: Int!): Order,
-            getCurrentOrderByUserId(user_id: ID!): Order
+            getOrder(id: ID!): Order,
+            getCurrentOrderByUserId(user_id: ID!): Order,
+            orderItem(order_id: ID, product_id: ID!): OrderItem
             
         }
 
         type Mutation {
-            createOrder(user_id: ID!, product_id: Int, product_count: Int!): Order,
-            addOrderItem(order_id: Int!, product_id: Int!, product_count: Int!): OrderItem
+            createOrder(user_id: ID!, product_id: ID!, product_count: Int!): Order,
+            addOrderItem(order_id: ID!, product_id: ID!, product_count: Int!): OrderItem
             deleteOrder(id: ID!): ID!
         }
 
