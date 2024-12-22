@@ -24,6 +24,7 @@ export const schema = gql`
             getOrder(id: ID!): Order,
             getCurrentOrderByUserId(user_id: ID!): Order,
             orderItem(order_id: ID, product_id: ID!): OrderItem
+            getOrderItemsInfo(order_id: ID!): [OrderItemInfo]
             
         }
 
@@ -58,6 +59,14 @@ export const schema = gql`
             order_id: ID!,
             product_id: ID!,
             product_count: Int!
+        }
+
+        type OrderItemInfo {
+            order_id: ID,
+            products_count: ID,
+            id: ID,
+            name: String,
+            image: String
         }
 
 `

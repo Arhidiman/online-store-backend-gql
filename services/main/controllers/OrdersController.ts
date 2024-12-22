@@ -7,6 +7,7 @@ import type { GetOrderByUserIdDto } from "../dto/Orders/GetOrderByUserIdDto.ts"
 import type { GetOrderItemDto } from "../dto/Orders/GetOrderItemDto.ts"
 import type { TOrderItem } from "../models/OrderItemsModel/OrderItemsModel.ts"
 import type { TOrder } from "../models/OrdersModel/OrdersModel.ts"
+import type { GetOrderItemsInfoDto } from "../dto/Orders/GetOrderItemsInfoDto.ts"
 
 
 export const OrdersController = {
@@ -33,6 +34,14 @@ export const OrdersController = {
                 return await OrdersModel.findOrderItem({ order_id, product_id })
             } catch(err: any) {
                 throw new Error(`Ошибка при получении данных о товаре из заказа. ${err.message}`)
+            }
+        },
+
+        async getOrderItemsInfo(_: any, { order_id }: { order_id: number}): Promise<GetOrderItemsInfoDto[]> {
+            try {
+                return await OrdersModel.getOrderItemsInfo({ order_id })
+            } catch(err: any) {
+                throw new Error(`Ошибка при получении списка товаров заказа. ${err.message}`)
             }
         },
     },
