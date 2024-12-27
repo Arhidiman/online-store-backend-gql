@@ -8,14 +8,15 @@ export const schema = gql`
         )
 
         type Query {
-            auth(username: String!, password: String!): User
+            signUp(username: String!, password: String!): User
             signIn(username: String!, password: String!): User
         }
      
         type User {
-            id: ID!
+            id: ID
             username: String,
             password: String,
+            jwt_token: String
         }
 
 `

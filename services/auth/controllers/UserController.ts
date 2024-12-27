@@ -1,6 +1,6 @@
 import UserModel from "../models/UserModel/UserModel.ts"
 import type { Model } from "sequelize"
-import type { TUser } from "../models/UserModel/UserModel.ts"
+import type { UserDto } from "../dto/User/index.ts"
 
 
 interface IAuth {
@@ -9,19 +9,22 @@ interface IAuth {
 }
 
 export const userController = {
-    auth: async (_: any, { username, password }: IAuth): Promise<Model<TUser> | null> => {
-        return await UserModel.findOne(username, password)
-    },
 
-    signIn: async (_: any, { username, password }: IAuth): Promise<Model<TUser> | null | undefined> => {
+    signUp: async (_: any, { username, password }: IAuth): Promise<UserDto | void> => {
         try {
-            return await UserModel.create(username, password)
 
+
+            return await UserModel.create({ username, password })
         } catch(err: any) {
 
             console.log(`Ошибка при регистрации пользователя\n${err.message}`)
 
         }
+    },
+
+    signIn: async (_: any, { username, password }: IAuth): Promise<Model<UserDto> | null> => {
+        return await UserModel.findOne(username, password)
     }
 
+    
 }
