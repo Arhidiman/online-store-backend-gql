@@ -9,10 +9,6 @@ import bodyParser from 'body-parser'
 import { schema } from './schema.ts';
 import { userController } from './controllers/UserController.ts';
 
-const users = [
-    {name: 'Dmitry', id: 777}, {name: 'Alexey', id: 666}
-];
-
 const PORT = 8000
 
 const app = express();
@@ -20,7 +16,11 @@ const httpServer = http.createServer(app);
 
 const resolvers = {
     Query: {
-        ...userController
+        ...userController.Queries
+    },
+
+    Mutation: {
+        ...userController.Mutatios
     }
   };
 
