@@ -1,6 +1,7 @@
 import UserModel from "../models/UserModel/UserModel.ts"
 import type { Model } from "sequelize"
-import type { UserDto, SignInDto, SignUpDto, ValidateTokenDto } from "../dto/User/index.ts"
+import type { UserDto, SignInDto, SignUpDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../dto/User/index.ts"
+import { Token } from "graphql"
 
 
 interface IAuth {
@@ -11,22 +12,11 @@ interface IAuth {
 export const userController = {
 
     Queries: {
-        signIn: async (_: any, { username, password }: SignInDto): Promise<UserDto | void> => {
-            try {
-                const user =  await UserModel.findOne(username, password) as unknown as UserDto
-                if (user) {
-                    return user
-                } else {
-                    throw new Error(`Неверный логин или пароль`)
-                }
-            } catch (err: any) {
-                throw new Error(`Ошибка аутентификации\n${err.message}`)
-            }
-        },
+     
         
-        validate: async (_: any, { jwt_token }: ValidateTokenDto): Promise<UserDto> => {
+        validate: async (_: any, { jwt_token }: ValidateTokenDto): Promise<VerifiedUserDataDto> => {
             try {
-                const user =  await UserModel.validateToken({ jwt_token }) as unknown as UserDto
+                const user =  await UserModel.validateToken({ jwt_token }) as unknown as VerifiedUserDataDto
                 if (user) {
                     return user
                 } else {
@@ -46,6 +36,22 @@ export const userController = {
             } catch(err: any) {
                 throw new Error(`Ошибка при регистрации пользователя\n${err.message}`)
             }
-        }
+        },
+        
+        signIn: async (_: any, { username, password }: SignInDto): Promise<TokenDto | void> => {
+            try {
+
+                console.log(username, password)
+
+                const jwt_token =  await UserModel.signIn({ username, password }) as unknown as UserDto
+                if (jwt_token) {
+                    return jwt_token
+                } else {
+                    throw new Error(`Неверный логин или пароль`)
+                }
+            } catch (err: any) {
+                throw new Error(`Ошибка аутентификации\n${err.message}`)
+            }
+        },
     }
 }

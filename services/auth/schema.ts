@@ -8,12 +8,12 @@ export const schema = gql`
         )
 
         type Query {
-            signIn(jwt_token: String!): User
             validate(jwt_token: String!): VefifiedUser
         }
         
 
         type Mutation {
+            signIn(username: String!, password: String!): Token
             signUp(username: String!, password: String!): User
         }
      
@@ -25,8 +25,13 @@ export const schema = gql`
         },
 
         type VefifiedUser {
-            id: Int!,
+            id: ID!,
             username: String!,
         }
+
+        type Token {
+            jwt_token: String!
+        }
+
 
 `

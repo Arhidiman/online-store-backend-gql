@@ -2,14 +2,9 @@ import jwt from 'jsonwebtoken'
 import { secretKey } from "../../jwt.ts"
 import { User } from "./User.ts"
 import type { Model } from "sequelize"
-import type { UserDto, ValidateTokenDto, VerifiedUserDataDto } from "../../dto/User/index.ts"
-import type { Jwt, JwtPayload } from 'jsonwebtoken'
+import type { UserDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../../dto/User/index.ts"
+import type { JwtPayload } from 'jsonwebtoken'
 
-
-interface TVerifiedUser extends JwtPayload {
-    id: number,
-    name: string
-}
 
 class UserModel {
 
@@ -32,6 +27,22 @@ class UserModel {
         return userWithJWT
     }
 
+    async signIn({ username, password }: {username: string, password: string}): Promise<TokenDto | void> {
+
+        const user = await User.findOne({ where: { username, password } }) as unknown as UserDto
+
+        if (user) {
+
+            const { id, username: name } = user || {}
+            const token = jwt.sign({ id, username: name }, secretKey)
+            await User.update({ jwt_token: token }, { where: { id } }) as unknown as UserDto
+
+            return { jwt_token: token }
+
+
+        }
+    }
+
     async validateToken({ jwt_token }: ValidateTokenDto): Promise<VerifiedUserDataDto> {
         
         const decodedPayload = jwt.verify(jwt_token, secretKey) as JwtPayload
@@ -40,7 +51,6 @@ class UserModel {
 
         return verifiedUser
     }
-
 }
 
 

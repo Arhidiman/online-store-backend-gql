@@ -2,6 +2,6 @@
     "watch": ["./"],
     "ext": "ts",
     "ignore": ["dist"],
-    "exec": "ts-node-esm gateway.ts"
+    "exec": "node --loader ts-node/esm gateway.ts"
   }
   

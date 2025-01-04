@@ -27,7 +27,6 @@ export type VerifiedUserDataDto = {
     username: string
 }
 
-export type TokenPayloadnDto = {
-    id: number,
-    username: string
+export type TokenDto = {
+    jwt_token: string
 }
