@@ -70,7 +70,7 @@ export const OrdersController = {
                 await OrdersModel.deleteOrderItem({ id })
                 return id
             } catch(err: any) {
-                throw new Error(`Ошибка при добавлении товара к заказу. ${err.message}`)
+                throw new Error(`Ошибка при удалении товара из заказа. ${err.message}`)
             }
         },
     

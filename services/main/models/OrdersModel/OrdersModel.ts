@@ -59,7 +59,7 @@ class OrderModels {
             select 
                 order_items.order_id, 
                 order_items.product_count, 
-                products.id, 
+                order_items.id, 
                 products.name, 
                 products.image 
             from order_items join products
