@@ -32,6 +32,7 @@ export const schema = gql`
             createOrder(user_id: ID!, product_id: ID!, product_count: Int!): Order,
             addOrderItem(order_id: ID!, product_id: ID!, product_count: Int!): OrderItem
             deleteOrder(id: ID!): ID!
+            deleteOrderItem(id: ID!): ID!
         }
 
         type Category {

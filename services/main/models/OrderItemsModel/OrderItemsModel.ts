@@ -3,6 +3,7 @@ import { OrderItems } from "./OrderItems.ts"
 import type { Model } from "sequelize"
 import type { AddOrderItemDto } from "../../dto/Orders/AddOrderItemDto.ts"
 import type { GetOrderItemDto } from "../../dto/Orders/GetOrderItemDto.ts"
+import type { DeleteOrderItemDto } from "../../dto/Orders/DeleteOrderItemDto.ts"
 
 
 export type TOrderItem = {
@@ -22,6 +23,10 @@ class OrderItemsModel {
 
     async findOne({ order_id, product_id }: GetOrderItemDto): Promise<Model<TOrderItem>> {
         return await OrderItems.findOne({ where: { order_id, product_id }}) as unknown as Promise<Model<TOrderItem>>
+    }
+
+    async deleteOrderItem({ id }: DeleteOrderItemDto): Promise<void> {
+        await OrderItems.destroy({ where: { id }})
     }
 
 }

@@ -9,6 +9,7 @@ import type { GetOrderItemDto } from "../../dto/Orders/GetOrderItemDto.ts"
 import type { DeleteOrderDto } from "../../dto/Orders/DeleteOrderDto.ts"
 import type { GetOrderByUserIdDto } from "../../dto/Orders/GetOrderByUserIdDto.ts"
 import type { GetOrderItemsInfoDto } from "../../dto/Orders/GetOrderItemsInfoDto.ts"
+import type { DeleteOrderItemDto } from "../../dto/Orders/DeleteOrderItemDto.ts"
 
 
 export type TOrder = {
@@ -42,6 +43,10 @@ class OrderModels {
 
     async addOrderItem({ order_id, product_id, product_count }: AddOrderItemDto): Promise<TOrderItem> {
         return await OrderItemsModel.create({ order_id, product_id, product_count }) as unknown as TOrderItem
+    }
+
+    async deleteOrderItem({ id }: DeleteOrderItemDto): Promise<void> {
+        await OrderItemsModel.deleteOrderItem({ id })
     }
 
     async deleteOrder({ id }: DeleteOrderDto): Promise<number> {

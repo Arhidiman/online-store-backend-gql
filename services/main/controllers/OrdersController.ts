@@ -8,6 +8,7 @@ import type { GetOrderItemDto } from "../dto/Orders/GetOrderItemDto.ts"
 import type { TOrderItem } from "../models/OrderItemsModel/OrderItemsModel.ts"
 import type { TOrder } from "../models/OrdersModel/OrdersModel.ts"
 import type { GetOrderItemsInfoDto } from "../dto/Orders/GetOrderItemsInfoDto.ts"
+import { DeleteOrderItemDto } from "../dto/Orders/DeleteOrderItemDto.ts"
 
 
 export const OrdersController = {
@@ -59,6 +60,15 @@ export const OrdersController = {
         async addOrderItem(_: any, { order_id, product_id, product_count }: AddOrderItemDto): Promise<TOrderItem> {
             try {
                 return await OrdersModel.addOrderItem({ order_id, product_id, product_count })
+            } catch(err: any) {
+                throw new Error(`Ошибка при добавлении товара к заказу. ${err.message}`)
+            }
+        },
+
+        async deleteOrderItem(_: any, { id }: DeleteOrderItemDto): Promise<number> {
+            try {
+                await OrdersModel.deleteOrderItem({ id })
+                return id
             } catch(err: any) {
                 throw new Error(`Ошибка при добавлении товара к заказу. ${err.message}`)
             }

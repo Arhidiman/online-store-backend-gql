@@ -12,7 +12,6 @@ interface IAuth {
 export const userController = {
 
     Queries: {
-     
         
         validate: async (_: any, { jwt_token }: ValidateTokenDto): Promise<VerifiedUserDataDto> => {
             try {
@@ -37,13 +36,13 @@ export const userController = {
                 throw new Error(`Ошибка при регистрации пользователя\n${err.message}`)
             }
         },
-        
+
         signIn: async (_: any, { username, password }: SignInDto): Promise<TokenDto | void> => {
             try {
 
                 console.log(username, password)
 
-                const jwt_token =  await UserModel.signIn({ username, password }) as unknown as UserDto
+                const jwt_token =  await UserModel.signIn({ username, password }) as unknown as TokenDto
                 if (jwt_token) {
                     return jwt_token
                 } else {
