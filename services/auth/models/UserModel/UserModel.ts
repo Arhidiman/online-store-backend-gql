@@ -12,7 +12,7 @@ class UserModel {
         return await User.findOne({raw: true, where: { username, password }})
     }
 
-    async create({ username, password}: {username: string, password: string}): Promise<UserDto> {
+    async create({ username, password}: {username: string, password: string}): Promise<TokenDto> {
 
         const userData = await User.create({ username, password, user_role: 'USER'})
 
@@ -21,10 +21,9 @@ class UserModel {
 
         const token = jwt.sign({ id, username: name }, secretKey)
 
-        await User.update({ jwt_token: token }, { where: { id } }) as unknown as UserDto
-        const userWithJWT = await User.findOne({ where: { id, jwt_token: token }}) as unknown as UserDto
+        await User.update({ jwt_token: token }, { where: { id } }) as unknown as TokenDto
 
-        return userWithJWT
+        return { jwt_token: token }
     }
 
     async signIn({ username, password }: {username: string, password: string}): Promise<TokenDto | void> {

@@ -61,7 +61,8 @@ class OrderModels {
                 order_items.product_count, 
                 order_items.id, 
                 products.name, 
-                products.image 
+                products.image,
+                products.price 
             from order_items join products
             on order_items.product_id = products.id and order_items.order_id = ${order_id}
         `

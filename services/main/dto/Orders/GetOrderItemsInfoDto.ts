@@ -4,5 +4,6 @@ export type GetOrderItemsInfoDto = {
     product_count: number,
     id: number,
     name: string,
-    image: string
+    image: string,
+    price: number
 }

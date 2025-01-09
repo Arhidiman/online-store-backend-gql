@@ -14,7 +14,7 @@ export const schema = gql`
 
         type Mutation {
             signIn(username: String!, password: String!): Token
-            signUp(username: String!, password: String!): User
+            signUp(username: String!, password: String!): Token
         }
      
         type User {

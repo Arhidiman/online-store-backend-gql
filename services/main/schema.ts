@@ -67,7 +67,8 @@ export const schema = gql`
             product_count: Int,
             id: ID,
             name: String,
-            image: String
+            image: String,
+            price: Int
         }
 
 `

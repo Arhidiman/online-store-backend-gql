@@ -29,7 +29,7 @@ export const userController = {
 
 
     Mutatios: {
-        signUp: async (_: any, { username, password }: IAuth): Promise<UserDto | void> => {
+        signUp: async (_: any, { username, password }: IAuth): Promise<TokenDto | void> => {
             try {
                 return await UserModel.create({ username, password })
             } catch(err: any) {
