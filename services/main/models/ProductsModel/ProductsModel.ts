@@ -3,7 +3,6 @@ import type { Model, Order } from "sequelize"
 import  { Op } from "sequelize"
 import type { ProductsFiltersDto } from "../../dto/Products/ProductsFiltersDto.ts"
 
-const mockProducts = [{name: 'phone', id: 1}, {name: 'table', id: 5}]
 
 export type TProduct = {
     id: number,

@@ -1,8 +1,5 @@
 import UserModel from "../models/UserModel/UserModel.ts"
-import type { Model } from "sequelize"
-import type { UserDto, SignInDto, SignUpDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../dto/User/index.ts"
-import { Token } from "graphql"
-
+import type { SignInDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../dto/User/index.ts"
 
 interface IAuth {
     username: string,

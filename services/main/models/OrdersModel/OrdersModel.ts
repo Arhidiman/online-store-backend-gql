@@ -60,6 +60,7 @@ class OrderModels {
                 order_items.order_id, 
                 order_items.product_count, 
                 order_items.id, 
+                products.id as product_id, 
                 products.name, 
                 products.image,
                 products.price 
