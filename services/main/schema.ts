@@ -33,6 +33,7 @@ export const schema = gql`
             addOrderItem(order_id: ID!, product_id: ID!, product_count: Int!): OrderItem
             deleteOrder(id: ID!): ID!
             deleteOrderItem(id: ID!): ID!
+            createTransaction(order_id: ID!, full_price: Int!): Transaction
         }
 
         type Category {
@@ -70,6 +71,13 @@ export const schema = gql`
             name: String,
             image: String,
             price: Int
+        }
+
+        type Transaction {
+            id: ID!,
+            order_id: ID!,
+            full_price: Int!,
+            timestamp: String!
         }
 
 `

@@ -10,6 +10,7 @@ import { schema } from './schema.ts';
 import { CategoriesController } from './controllers/CategoriesController.ts';
 import { ProductsController } from './controllers/ProductsController.ts';
 import { OrdersController } from './controllers/OrdersController.ts';
+import { TransactionsController } from './controllers/TransactionsController.ts';
 
 const PORT = 7000
 
@@ -20,9 +21,11 @@ const resolvers = {
     Query: {
         ...CategoriesController,
         ...ProductsController,
-        ...OrdersController.Queries
+        ...OrdersController.Queries,
+        ...TransactionsController.Queries
     },
     Mutation: {
+        ...TransactionsController.Mutations,
         ...OrdersController.Mutations
     }
   }
