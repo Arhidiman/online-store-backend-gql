@@ -13,8 +13,8 @@ export const TransactionsController = {
     }, 
 
     Mutations: {
-        async createTransaction(_: any, { order_id, full_price }: CreateTransactionDto): Promise<TransactionDto | null> {
-            return await TransactionsModel.create({ order_id, full_price }) as unknown as TransactionDto
+        async createTransaction(_: any, { order_id, full_price, order_items }: CreateTransactionDto): Promise<TransactionDto | null> {
+            return await TransactionsModel.create({ order_id, full_price, order_items }) as unknown as TransactionDto
         }
     }
 
