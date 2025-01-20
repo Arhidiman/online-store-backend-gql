@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { secretKey } from "../../jwt.ts"
+import { secretKey } from "../../../jwt.ts"
 import { User } from "./User.ts"
 import type { Model } from "sequelize"
 import type { UserDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../../dto/User/index.ts"

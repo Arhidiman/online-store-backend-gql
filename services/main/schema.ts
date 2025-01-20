@@ -25,6 +25,7 @@ export const schema = gql`
             getCurrentOrderByUserId(user_id: ID!): Order,
             orderItem(order_id: ID, product_id: ID!): OrderItem
             getOrderItemsInfo(order_id: ID!): [OrderItemInfo]
+            getTransactionsItemsData(jwt_token: String!): [TransactionItemData]
             
         }
 
@@ -84,5 +85,13 @@ export const schema = gql`
             full_price: Int!,
             timestamp: String!
         }
+
+        type TransactionItemData {
+            id: ID!,
+            full_price: Int!,
+            created_at: String!,
+            username: String!
+        }
+
 
 `
