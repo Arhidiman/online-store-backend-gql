@@ -87,10 +87,11 @@ export const schema = gql`
         }
 
         type TransactionItemData {
-            id: ID!,
             full_price: Int!,
             created_at: String!,
-            username: String!
+            city: String!,
+            street: String!,
+            building: String!
         }
 
 

@@ -30,11 +30,13 @@ class TransactionsModel {
 
         const query = `
             select 
-                transactions.id,
                 transactions.full_price, 
                 transactions.created_at, 
-                store_users.username
-            from transactions 
+                delivery_data.city,
+                delivery_data.street,
+                delivery_data.building
+            from delivery_data
+            join transactions on delivery_data.transaction_id = transactions.id 
             join orders on transactions.order_id = orders.id
             join store_users on orders.user_id = store_users.id and store_users.id = ${id}
         `
