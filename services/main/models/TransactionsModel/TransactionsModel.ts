@@ -2,6 +2,7 @@ import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
 import { Transaction } from "./Transaction.ts"
 import { OrderItems } from "../OrderItemsModel/OrderItems.ts"
 import { Order } from "../OrdersModel/Order.ts"
+import { DeliveryData } from "../DeliveryDataModel/DeliveryData.ts"
 import UserModel from "../UserModel/UserModel.ts"
 import type { Model } from "sequelize"
 import type { CreateTransactionDto, TransactionDto, GetAllTransactionsDto, TransactionsDataDto } from "../../dto/Transactions/index.ts"
@@ -10,14 +11,20 @@ import type { VerifiedUserDataDto } from "../../dto/User/index.ts"
 
 class TransactionsModel {
     
-    async create({ order_id, full_price, order_items }: CreateTransactionDto ): Promise<Model<TransactionDto> | null> {
+    async create({ order_id, full_price, order_items, city, street, building }: CreateTransactionDto ): Promise<TransactionDto| null> {
         for (const item of order_items) {
             const { id, product_count} = item
             await OrderItems.update({ product_count }, { where: { id }})
         }
 
         await Order.update({ is_current: false }, { where: { id: order_id } })
-        return await Transaction.create({ order_id, full_price})
+
+        const transaction = await Transaction.create({ order_id, full_price}) as unknown as TransactionDto
+
+        const { id: transaction_id } = transaction
+
+        await DeliveryData.create({city, street, building, transaction_id})
+        return transaction
     }
 
     async getAll({ jwt_token }: GetAllTransactionsDto): Promise<TransactionsDataDto | void> {
@@ -42,9 +49,6 @@ class TransactionsModel {
         `
 
         const data = await sequelizeInstance.query(query)
-
-        console.log(data[0], 'data')
-
         return data && data[0] as unknown as TransactionsDataDto
     }
 

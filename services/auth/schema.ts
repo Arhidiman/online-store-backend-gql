@@ -33,5 +33,4 @@ export const schema = gql`
             jwt_token: String!
         }
 
-
 `
