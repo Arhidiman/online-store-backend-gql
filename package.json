@@ -5,6 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "fix-imports": "node fix-imports.js",
+    "build": "tsc -p tsconfig.build.json && npm run fix-imports",
+    "start-all": "concurrently \"node dist/services/main/index.js\" \"node dist/services/auth/index.js\" \"node dist/gateway.js\"",
+    "gateway-prod": "node dist/gateway.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "main-serve": "nodemon --config nodemon.main.json",
     "auth-serve": "nodemon --config nodemon.auth.json",
