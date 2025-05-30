@@ -18,20 +18,17 @@ export const Product = (sequelizeInstance: Sequelize) => {
                 allowNull: false
             },
             image: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: false
             },
             discount: {
                 type: DataTypes.DOUBLE,
-                allowNull: false
             },
             in_stock: {
                 type: DataTypes.INTEGER,
-                allowNull: false
             },
             rating: {
                 type: DataTypes.DOUBLE,
-                allowNull: false
             },
         },
         {
