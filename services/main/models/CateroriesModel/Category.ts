@@ -1,18 +1,18 @@
-import { DataTypes } from "sequelize"
-import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
+import { DataTypes, Sequelize } from "sequelize"
 
+export const Category = (sequelizeInstance: Sequelize) => {
+    return sequelizeInstance.define('categories', {
 
-export const Category = sequelizeInstance.define('categories', {
-
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        autoIncrement: true
-    },
-    id: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        primaryKey: true
-    }
-
-},   { tableName: 'categories', timestamps: false } )
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            autoIncrement: true
+        },
+        id: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            primaryKey: true
+        }
+    
+    },   { tableName: 'categories', timestamps: false } )
+}

@@ -1,4 +1,4 @@
-import { Order } from "./Order.ts"
+import { Order } from "../initModels.ts"
 import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
 import OrderItemsModel from "../OrderItemsModel/OrderItemsModel.ts"
 import type { TOrderItem } from "../OrderItemsModel/OrderItemsModel.ts"

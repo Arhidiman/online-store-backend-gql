@@ -1,5 +1,5 @@
 import { sequelizeInstance } from "../../../auth/db/sequelizeInstance.ts"
-import { OrderItems } from "./OrderItems.ts"
+import { OrderItems } from "../initModels.ts"
 import type { Model } from "sequelize"
 import type { AddOrderItemDto } from "../../dto/Orders/AddOrderItemDto.ts"
 import type { GetOrderItemDto } from "../../dto/Orders/GetOrderItemDto.ts"
