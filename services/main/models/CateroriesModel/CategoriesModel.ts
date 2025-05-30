@@ -1,4 +1,4 @@
-import { Category } from "./Category.ts";
+import { Category } from "../initModels.ts"
 
 export type TCategory = {
     id: Number, 

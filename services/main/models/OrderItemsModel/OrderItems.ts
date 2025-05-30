@@ -1,43 +1,36 @@
-import { DataTypes, Deferrable } from "sequelize"
-import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
-import { Order } from "../OrdersModel/Order.ts"
-import { Product } from "../ProductsModel/Product.ts"
+import { DataTypes, Deferrable, Sequelize } from "sequelize"
+import { Product, Order } from "../initModels.ts"
 
-export const OrderItems = sequelizeInstance.define('order_items', 
-    
-    {
-        id: {
-            type: DataTypes.UUID,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        order_id: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            references: {
-                model: Order,
-                key: 'id',
-                deferrable: Deferrable.INITIALLY_IMMEDIATE()
-            }
-        },
-        product_id: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            references: {
-                model: Product,
-                key: 'id',
-                deferrable: Deferrable.INITIALLY_IMMEDIATE()
-            }
-        },
-        product_count: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-
-        }
+export const OrderItems = (sequelize: Sequelize) =>
+  sequelize.define('order_items', {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      autoIncrement: true
     },
-
-    {
-        timestamps: false, 
-        tableName: 'order_items'
+    order_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: Order,
+        key: 'id',
+        deferrable: Deferrable.INITIALLY_IMMEDIATE()
+      }
+    },
+    product_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: Product,
+        key: 'id',
+        deferrable: Deferrable.INITIALLY_IMMEDIATE()
+      }
+    },
+    product_count: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     }
-)
+  }, {
+    timestamps: false,
+    tableName: 'order_items'
+  })

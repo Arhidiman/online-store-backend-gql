@@ -1,8 +1,6 @@
 import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
-import { Transaction } from "./Transaction.ts"
-import { OrderItems } from "../OrderItemsModel/OrderItems.ts"
-import { Order } from "../OrdersModel/Order.ts"
-import { DeliveryData } from "../DeliveryDataModel/DeliveryData.ts"
+
+import { Order, OrderItems, Transaction, DeliveryData } from "../initModels.ts"
 import UserModel from "../UserModel/UserModel.ts"
 import type { Model } from "sequelize"
 import type { CreateTransactionDto, TransactionDto, GetAllTransactionsDto, TransactionsDataDto } from "../../dto/Transactions/index.ts"
