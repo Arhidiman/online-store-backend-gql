@@ -23,10 +23,9 @@ export const User = (sequelize: Sequelize) =>
     },
     user_role: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     jwt_token: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
   }, {
