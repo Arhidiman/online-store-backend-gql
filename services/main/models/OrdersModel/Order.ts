@@ -6,7 +6,7 @@ export const Order = (sequelize: Sequelize) =>
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      autoIncrement: true
+      
     },
     user_id: {
       type: DataTypes.UUID,

@@ -6,7 +6,7 @@ export const Category = (sequelizeInstance: Sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            autoIncrement: true
+            
         },
         id: {
             type: DataTypes.UUID,

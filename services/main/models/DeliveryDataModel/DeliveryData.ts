@@ -6,7 +6,7 @@ export const DeliveryData = (sequelize: Sequelize) =>
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      autoIncrement: true
+      
     },
     city: {
       type: DataTypes.STRING,

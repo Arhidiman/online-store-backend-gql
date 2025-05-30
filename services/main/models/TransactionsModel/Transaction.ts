@@ -6,7 +6,7 @@ export const Transaction = (sequelize: Sequelize) =>
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
-      autoIncrement: true
+      
     },
     order_id: {
       type: DataTypes.UUID,

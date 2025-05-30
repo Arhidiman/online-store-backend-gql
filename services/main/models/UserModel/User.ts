@@ -6,7 +6,7 @@ export const User = (sequelize: Sequelize) =>
       type: DataTypes.UUID,
       allowNull: true,
       primaryKey: true,
-      autoIncrement: true
+      
     },
     username: {
       type: DataTypes.STRING,
