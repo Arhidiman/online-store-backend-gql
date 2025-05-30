@@ -28,7 +28,9 @@ export const User = (sequelize: Sequelize) =>
       type: DataTypes.TEXT,
       allowNull: true,
     },
-  }, {
+  }, 
+  {
     tableName: 'store_users',
     timestamps: false
-  })
+  }
+)
