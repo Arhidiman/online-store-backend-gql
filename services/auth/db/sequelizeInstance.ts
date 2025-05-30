@@ -8,7 +8,7 @@ export const sequelizeInstance = new Sequelize(database, user, password, {
     dialect: 'postgres'
 })
 
-await sequelizeInstance.sync()
+await sequelizeInstance.sync({ alter: true })
 
 try {
     await sequelizeInstance.authenticate();
