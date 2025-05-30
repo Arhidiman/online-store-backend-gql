@@ -1,4 +1,4 @@
-import { Product } from "./Product.js";
+import { Product } from "../initModels.js";
 import { Op } from "sequelize";
 class ProductsModel {
     async findAll() {

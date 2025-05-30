@@ -1,4 +1,4 @@
-import { Category } from "./Category.js";
+import { Category } from "../initModels.js";
 class CategoriesModel {
     async getAll() {
         const categories = await Category.findAll({ raw: true });

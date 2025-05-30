@@ -1,4 +1,4 @@
-import { Order } from "./Order.js";
+import { Order } from "../initModels.js";
 import { sequelizeInstance } from "../../db/sequelizeInstance.js";
 import OrderItemsModel from "../OrderItemsModel/OrderItemsModel.js";
 class OrderModels {

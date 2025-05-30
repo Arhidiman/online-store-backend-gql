@@ -6,6 +6,7 @@ import http from 'http';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import { sequelizeInstance } from './db/sequelizeInstance.js';
 import { schema } from './schema.js';
 import { CategoriesController } from './controllers/CategoriesController.js';
 import { ProductsController } from './controllers/ProductsController.js';
@@ -14,6 +15,16 @@ import { TransactionsController } from './controllers/TransactionsController.js'
 const PORT = 7000;
 const app = express();
 const httpServer = http.createServer(app);
+try {
+    await sequelizeInstance.authenticate();
+    console.log('✅ DB connected');
+    await sequelizeInstance.sync({ alter: true }); // или { force: true } для пересоздания
+    console.log('✅ DB synced');
+}
+catch (err) {
+    console.error('❌ Failed to sync DB:', err);
+    process.exit(1);
+}
 const resolvers = {
     Query: {
         ...CategoriesController,

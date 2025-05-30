@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "fix-imports": "node fix-imports.js",
+    "typecheck": "tsc -p tsconfig.check.json",
     "build": "tsc -p tsconfig.build.json && npm run fix-imports",
     "start-all": "concurrently \"node dist/services/main/index.js\" \"node dist/services/auth/index.js\" \"node dist/gateway.js\"",
     "gateway-prod": "node dist/gateway.js",

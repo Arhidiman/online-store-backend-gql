@@ -1,4 +1,4 @@
-import { OrderItems } from "./OrderItems.js";
+import { OrderItems } from "../initModels.js";
 class OrderItemsModel {
     async create({ order_id, product_id, product_count }) {
         return await OrderItems.create({ order_id, product_id, product_count });

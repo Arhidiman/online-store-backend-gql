@@ -1,11 +1,9 @@
 import { DataTypes } from "sequelize";
-import { sequelizeInstance } from "../../db/sequelizeInstance.js";
-export const User = sequelizeInstance.define('store_users', {
+export const User = (sequelize) => sequelize.define('store_users', {
     id: {
         type: DataTypes.UUID,
         allowNull: true,
         primaryKey: true,
-        autoIncrement: true
     },
     username: {
         type: DataTypes.STRING,
@@ -22,12 +20,12 @@ export const User = sequelizeInstance.define('store_users', {
     },
     user_role: {
         type: DataTypes.STRING,
-        allowNull: false,
     },
     jwt_token: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
     },
 }, {
-    tableName: 'store_users', timestamps: false
+    tableName: 'store_users',
+    timestamps: false
 });

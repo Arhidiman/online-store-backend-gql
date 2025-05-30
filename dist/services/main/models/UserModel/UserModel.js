@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { User } from "./User.js";
+import { User } from '../initModels.js';
 import { secretKey } from "../../../jwt.js";
 class UserModel {
     async findOne(username, password) {

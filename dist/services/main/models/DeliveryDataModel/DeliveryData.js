@@ -1,11 +1,9 @@
 import { DataTypes, Deferrable } from "sequelize";
-import { sequelizeInstance } from "../../db/sequelizeInstance.js";
-import { Transaction } from "../TransactionsModel/Transaction.js";
-export const DeliveryData = sequelizeInstance.define('order_items', {
+import { Transaction } from "../initModels.js";
+export const DeliveryData = (sequelize) => sequelize.define('delivery_data', {
     id: {
         type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true
     },
     city: {
         type: DataTypes.STRING,

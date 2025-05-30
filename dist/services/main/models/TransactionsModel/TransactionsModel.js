@@ -1,8 +1,5 @@
 import { sequelizeInstance } from "../../db/sequelizeInstance.js";
-import { Transaction } from "./Transaction.js";
-import { OrderItems } from "../OrderItemsModel/OrderItems.js";
-import { Order } from "../OrdersModel/Order.js";
-import { DeliveryData } from "../DeliveryDataModel/DeliveryData.js";
+import { Order, OrderItems, Transaction, DeliveryData } from "../initModels.js";
 import UserModel from "../UserModel/UserModel.js";
 class TransactionsModel {
     async create({ order_id, full_price, order_items, city, street, building }) {
