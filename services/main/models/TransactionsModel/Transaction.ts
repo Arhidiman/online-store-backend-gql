@@ -4,12 +4,13 @@ import { Order } from "../initModels.ts"
 export const Transaction = (sequelize: Sequelize) =>
   sequelize.define('transactions', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
-      
+      autoIncrement: true   
     },
     order_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Order,
@@ -22,7 +23,8 @@ export const Transaction = (sequelize: Sequelize) =>
       allowNull: false
     },
     created_at: {
-      type: DataTypes.TIME
+      type: DataTypes.DATE,
+      allowNull: false
     }
   }, {
     timestamps: false,

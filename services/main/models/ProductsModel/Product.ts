@@ -1,13 +1,14 @@
 import { DataTypes, Sequelize } from "sequelize"
-import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
+import { Category } from "../initModels.ts"
 
 export const Product = (sequelizeInstance: Sequelize) => {
-    return sequelizeInstance.define('products',
+    const ProductModel = sequelizeInstance.define('products',
         {
             id: {
-                type: DataTypes.UUID,
+                type: DataTypes.INTEGER,
+                allowNull: false,
                 primaryKey: true,
-                
+                autoIncrement: true
             },
             name: {
                 type: DataTypes.STRING,
@@ -30,9 +31,20 @@ export const Product = (sequelizeInstance: Sequelize) => {
             rating: {
                 type: DataTypes.DOUBLE,
             },
+            category_id: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: 'categories', // имя таблицы
+                    key: 'id'
+                }
+            }
         },
         {
-            tableName: 'products', timestamps: false
+            tableName: 'products',
+            timestamps: false
         }
     )
-} 
+
+    return ProductModel
+}

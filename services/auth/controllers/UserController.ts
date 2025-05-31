@@ -30,7 +30,9 @@ export const userController = {
             try {
                 return await UserModel.create({ username, password })
             } catch(err: any) {
-                throw new Error(`Ошибка при регистрации пользователя\n${err.message}`)
+
+                console.log(err.message)
+                throw new Error(`Ошибка при регистрации пользователя.\n${err.message}`)
             }
         },
 

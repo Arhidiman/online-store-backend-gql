@@ -19,7 +19,6 @@ const app = express();
 const httpServer = http.createServer(app);
 
 
-
 try {
     await sequelizeInstance.authenticate();
     console.log('✅ DB connected');

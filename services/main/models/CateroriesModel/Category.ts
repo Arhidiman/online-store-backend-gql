@@ -1,18 +1,19 @@
 import { DataTypes, Sequelize } from "sequelize"
 
 export const Category = (sequelizeInstance: Sequelize) => {
-    return sequelizeInstance.define('categories', {
-
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            
-        },
-        id: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            primaryKey: true
-        }
-    
-    },   { tableName: 'categories', timestamps: false } )
+  return sequelizeInstance.define('categories', {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true 
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
+  }, {
+    tableName: 'categories',
+    timestamps: false
+  })
 }

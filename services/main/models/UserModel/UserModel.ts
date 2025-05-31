@@ -29,7 +29,6 @@ class UserModel {
         
         const decodedPayload = jwt.verify(jwt_token, secretKey) as JwtPayload
 
-        console.log(decodedPayload, 'decodedPayload')
         const { username, id } = decodedPayload
         const verifiedUser = { username, id}
 

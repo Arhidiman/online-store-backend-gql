@@ -4,9 +4,9 @@ export const User = (sequelize: Sequelize) =>
   sequelize.define('store_users', {
     id: {
       type: DataTypes.UUID,
-      allowNull: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
-      
     },
     username: {
       type: DataTypes.STRING,
@@ -17,12 +17,13 @@ export const User = (sequelize: Sequelize) =>
       allowNull: false,
     },
     created_at: {
-      type: DataTypes.TIME,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+      allowNull: false
     },
     user_role: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     jwt_token: {
       type: DataTypes.TEXT,
