@@ -19,12 +19,11 @@ const app = express();
 const httpServer = http.createServer(app);
 
 
-
 try {
     await sequelizeInstance.authenticate();
     console.log('✅ DB connected');
   
-    await sequelizeInstance.sync({ force: true }); // или { force: true } для пересоздания
+    await sequelizeInstance.sync({ alter: true }); // или { force: true } для пересоздания
     console.log('✅ DB synced');
   } catch (err) {
     console.error('❌ Failed to sync DB:', err);
