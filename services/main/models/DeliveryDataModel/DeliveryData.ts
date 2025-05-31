@@ -4,9 +4,10 @@ import { Transaction } from "../initModels.ts"
 export const DeliveryData = (sequelize: Sequelize) =>
   sequelize.define('delivery_data', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
-      
+      autoIncrement: true  
     },
     city: {
       type: DataTypes.STRING,
@@ -21,7 +22,7 @@ export const DeliveryData = (sequelize: Sequelize) =>
       allowNull: false,
     },
     transaction_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Transaction,

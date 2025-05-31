@@ -4,12 +4,13 @@ import { Product, Order } from "../initModels.ts"
 export const OrderItems = (sequelize: Sequelize) =>
   sequelize.define('order_items', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
-      
+      autoIncrement: true  
     },
     order_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Order,
@@ -18,7 +19,7 @@ export const OrderItems = (sequelize: Sequelize) =>
       }
     },
     product_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: Product,

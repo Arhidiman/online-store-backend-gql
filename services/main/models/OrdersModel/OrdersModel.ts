@@ -35,6 +35,7 @@ class OrderModels {
     async createNew({ user_id, product_id, product_count }: CreateOrderDto): Promise<TOrder> {
 
         const order = await Order.create({ user_id, is_current: true }) as unknown as TOrder
+
         const { id: order_id } = order
         await OrderItemsModel.create({ order_id, product_id, product_count } as TOrderItem)
 

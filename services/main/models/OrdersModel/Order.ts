@@ -4,9 +4,10 @@ import { User } from "../initModels.ts"
 export const Order = (sequelize: Sequelize) =>
   sequelize.define('orders', {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
+      allowNull: false,
       primaryKey: true,
-      
+      autoIncrement: true  
     },
     user_id: {
       type: DataTypes.UUID,

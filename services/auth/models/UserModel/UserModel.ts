@@ -14,10 +14,17 @@ class UserModel {
 
     async create({ username, password}: {username: string, password: string}): Promise<TokenDto> {
 
+        console.log(username, password)
+
         const userData = await User.create({ username, password, user_role: 'USER'})
+
+
+        console.log(userData, 'new uwer userData')
 
         const user = userData && userData.dataValues 
         const { id, username: name } = user || {}
+
+        console.log(user, 'new uwer')
 
         const token = jwt.sign({ id, username: name }, secretKey)
 

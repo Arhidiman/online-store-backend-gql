@@ -18,6 +18,7 @@ export const ProductsController = {
 
     async sortedProducts(_: any, filters: ProductsFiltersDto): Promise<Model<TProduct>[] | null | undefined> {
         try {
+            const sorted = await ProductsModel.sortedProducts(filters)
             return await ProductsModel.sortedProducts(filters)
         } catch(err: any) {
             console.error(err.message, 'Ошибка при получении фильтрованного списка товаров')

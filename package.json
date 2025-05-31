@@ -5,11 +5,18 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "fix-imports": "node fix-imports.js",
+    "typecheck": "tsc -p tsconfig.check.json",
+    "build": "tsc -p tsconfig.build.json && npm run fix-imports",
+    "start-all": "concurrently \"npm run start-main\" \"npm run start-auth\"",
+    "start-main": "node dist/services/main/index.js",
+    "start-auth": "node dist/services/auth/index.js",
+    "start-gateway": "node dist/gateway.js",
+    "gateway-prod": "node dist/gateway.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "main-serve": "nodemon --config nodemon.main.json",
     "auth-serve": "nodemon --config nodemon.auth.json",
     "products": "npx ts-node-esm services/productsService.ts",
-    "full-dev": "concurrently  \"ts-node-esm  services/main/index.ts\" \"ts-node-esm  services/auth/index.ts\" \"ts-node-esm gateway.ts\"",
     "gateway": "nodemon"
   },
   "keywords": [],
@@ -40,6 +47,7 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/pg": "^8.11.10",
     "concurrently": "^9.1.0",
+    "cross-env-shell": "^7.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }

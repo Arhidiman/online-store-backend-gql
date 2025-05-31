@@ -12,7 +12,7 @@ export const schema = gql`
             products: [Product],
             product(id: ID!): Product,
             sortedProducts(
-                    price: Int, 
+                    price: Float, 
                     in_stock: Boolean, 
                     discount: Boolean, 
                     priceSort: String, 
@@ -36,7 +36,7 @@ export const schema = gql`
             deleteOrderItem(id: ID!): ID!
             createTransaction(
                 order_id: ID!, 
-                full_price: Int!, 
+                full_price: Float!, 
                 order_items: [UpdatedOrderItem]!,
                 city: String!,
                 street: String!,
@@ -52,7 +52,7 @@ export const schema = gql`
         type Product {
             id: ID!
             name: String,
-            price: Int,
+            price: Float,
             image: String,
             discount: Float,
             in_stock: Int,
@@ -78,7 +78,7 @@ export const schema = gql`
             product_id: ID,
             name: String,
             image: String,
-            price: Int
+            price: Float
         }
 
         input UpdatedOrderItem {
@@ -94,7 +94,7 @@ export const schema = gql`
         }
 
         type TransactionItemData {
-            full_price: Int!,
+            full_price: Float!,
             created_at: String!,
             city: String!,
             street: String!,
