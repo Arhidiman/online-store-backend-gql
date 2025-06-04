@@ -1,10 +1,10 @@
-import { sequelizeInstance } from "../../db/sequelizeInstance.ts"
+import { sequelizeInstance } from "../../db/sequelizeInstance.js"
 
-import { Order, OrderItems, Transaction, DeliveryData } from "../initModels.ts"
-import UserModel from "../UserModel/UserModel.ts"
+import { Order, OrderItems, Transaction, DeliveryData } from "../initModels.js"
+import UserModel from "../UserModel/UserModel.js"
 import { or, type Model } from "sequelize"
-import type { CreateTransactionDto, TransactionDto, GetAllTransactionsDto, TransactionsDataDto } from "../../dto/Transactions/index.ts"
-import type { VerifiedUserDataDto } from "../../dto/User/index.ts"
+import type { CreateTransactionDto, TransactionDto, GetAllTransactionsDto, TransactionsDataDto } from "../../dto/Transactions/index.js"
+import type { VerifiedUserDataDto } from "../../dto/User/index.js"
 
 
 class TransactionsModel {

@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize } from "sequelize"
-import { Category } from "../initModels.ts"
+import { Category } from "../initModels.js"
 
 export const Product = (sequelizeInstance: Sequelize) => {
     const ProductModel = sequelizeInstance.define('products',

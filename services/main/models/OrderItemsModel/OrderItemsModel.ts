@@ -1,9 +1,9 @@
-import { sequelizeInstance } from "../../../auth/db/sequelizeInstance.ts"
-import { OrderItems } from "../initModels.ts"
+import { sequelizeInstance } from "../../../auth/db/sequelizeInstance.js"
+import { OrderItems } from "../initModels.js"
 import type { Model } from "sequelize"
-import type { AddOrderItemDto } from "../../dto/Orders/AddOrderItemDto.ts"
-import type { GetOrderItemDto } from "../../dto/Orders/GetOrderItemDto.ts"
-import type { DeleteOrderItemDto } from "../../dto/Orders/DeleteOrderItemDto.ts"
+import type { AddOrderItemDto } from "../../dto/Orders/AddOrderItemDto.js"
+import type { GetOrderItemDto } from "../../dto/Orders/GetOrderItemDto.js"
+import type { DeleteOrderItemDto } from "../../dto/Orders/DeleteOrderItemDto.js"
 
 
 export type TOrderItem = {

@@ -1,4 +1,4 @@
-import { dbConfig } from './config.ts'
+import { dbConfig } from './config.js'
 import { Sequelize, Model, DataTypes } from 'sequelize';
 
 const { database, user, password} = dbConfig

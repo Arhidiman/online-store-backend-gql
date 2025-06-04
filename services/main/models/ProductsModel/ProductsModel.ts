@@ -1,7 +1,7 @@
-import { Product } from "../initModels.ts"
+import { Product } from "../initModels.js"
 import type { Model, Order } from "sequelize"
 import  { Op } from "sequelize"
-import type { ProductsFiltersDto } from "../../dto/Products/ProductsFiltersDto.ts"
+import type { ProductsFiltersDto } from "../../dto/Products/ProductsFiltersDto.js"
 
 
 export type TProduct = {

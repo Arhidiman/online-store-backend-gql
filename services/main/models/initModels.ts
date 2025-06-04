@@ -1,13 +1,13 @@
-import { sequelizeInstance } from '../db/sequelizeInstance.ts'
+import { sequelizeInstance } from '../db/sequelizeInstance.js'
 
 // Импорты фабрик
-import { Product as ProductFactory } from './ProductsModel/Product.ts'
-import { Category as CategoryFactory } from './CateroriesModel/Category.ts'
-import { DeliveryData as DeliveryDataFactory } from './DeliveryDataModel/DeliveryData.ts'
-import { OrderItems as OrderItemsFactory } from './OrderItemsModel/OrderItems.ts'
-import { Order as OrderFactory } from './OrdersModel/Order.ts'
-import { Transaction as TransactionFactory } from './TransactionsModel/Transaction.ts'
-import { User as UserFactory } from './UserModel/User.ts'
+import { Product as ProductFactory } from './ProductsModel/Product.js'
+import { Category as CategoryFactory } from './CateroriesModel/Category.js'
+import { DeliveryData as DeliveryDataFactory } from './DeliveryDataModel/DeliveryData.js'
+import { OrderItems as OrderItemsFactory } from './OrderItemsModel/OrderItems.js'
+import { Order as OrderFactory } from './OrdersModel/Order.js'
+import { Transaction as TransactionFactory } from './TransactionsModel/Transaction.js'
+import { User as UserFactory } from './UserModel/User.js'
 
 // Инициализация моделей
 export const User = UserFactory(sequelizeInstance)

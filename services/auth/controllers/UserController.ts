@@ -1,5 +1,5 @@
-import UserModel from "../models/UserModel/UserModel.ts"
-import type { SignInDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../dto/User/index.ts"
+import UserModel from "../models/UserModel/UserModel.js"
+import type { SignInDto, ValidateTokenDto, VerifiedUserDataDto, TokenDto } from "../dto/User/index.js"
 
 interface IAuth {
     username: string,

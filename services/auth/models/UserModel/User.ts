@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelizeInstance } from "../../db/sequelizeInstance.ts";
+import { sequelizeInstance } from "../../db/sequelizeInstance.js";
 
 export const User = sequelizeInstance.define('store_users', {
     id: {

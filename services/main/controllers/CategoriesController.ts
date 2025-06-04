@@ -1,5 +1,5 @@
-import categoriesModel from "../models/CateroriesModel/CategoriesModel.ts"
-import type { TCategory } from "../models/CateroriesModel/CategoriesModel.ts"
+import categoriesModel from "../models/CateroriesModel/CategoriesModel.js"
+import type { TCategory } from "../models/CateroriesModel/CategoriesModel.js"
 
 export const CategoriesController = {
     categories: async (): Promise<TCategory[] | undefined> => {

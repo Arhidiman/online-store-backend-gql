@@ -1,7 +1,7 @@
-import TransactionsModel from "../models/TransactionsModel/TransactionsModel.ts"
-import type { CreateTransactionDto, TransactionDto } from "../dto/Transactions/index.ts"
-import type { ValidateTokenDto } from "../dto/User/index.ts"
-import type { TransactionsDataDto } from "../dto/Transactions/index.ts"
+import TransactionsModel from "../models/TransactionsModel/TransactionsModel.js"
+import type { CreateTransactionDto, TransactionDto } from "../dto/Transactions/index.js"
+import type { ValidateTokenDto } from "../dto/User/index.js"
+import type { TransactionsDataDto } from "../dto/Transactions/index.js"
 
 
 

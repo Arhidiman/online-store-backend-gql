@@ -7,7 +7,7 @@
   "scripts": {
     "fix-imports": "node fix-imports.js",
     "typecheck": "tsc -p tsconfig.check.json",
-    "build": "tsc -p tsconfig.build.json && npm run fix-imports",
+    "build": "tsc -p tsconfig.build.json",
     "start-all": "concurrently \"npm run start-main\" \"npm run start-auth\"",
     "start-main": "node dist/services/main/index.js",
     "start-auth": "node dist/services/auth/index.js",
