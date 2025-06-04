@@ -1,7 +1,7 @@
-import ProductsModel from "../models/ProductsModel/ProductsModel.ts"
-import type { TProduct } from "../models/ProductsModel/ProductsModel.ts"
+import ProductsModel from "../models/ProductsModel/ProductsModel.js"
+import type { TProduct } from "../models/ProductsModel/ProductsModel.js"
 import type { Model } from "sequelize"
-import type { ProductsFiltersDto } from "../dto/Products/ProductsFiltersDto.ts"
+import type { ProductsFiltersDto } from "../dto/Products/ProductsFiltersDto.js"
 
 
 

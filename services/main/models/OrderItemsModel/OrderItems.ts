@@ -1,5 +1,5 @@
 import { DataTypes, Deferrable, Sequelize } from "sequelize"
-import { Product, Order } from "../initModels.ts"
+import { Product, Order } from "../initModels.js"
 
 export const OrderItems = (sequelize: Sequelize) =>
   sequelize.define('order_items', {

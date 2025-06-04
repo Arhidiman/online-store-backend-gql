@@ -6,12 +6,12 @@ import http from 'http';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser'
-import { sequelizeInstance } from './db/sequelizeInstance.ts';
-import { schema } from './schema.ts';
-import { CategoriesController } from './controllers/CategoriesController.ts';
-import { ProductsController } from './controllers/ProductsController.ts';
-import { OrdersController } from './controllers/OrdersController.ts';
-import { TransactionsController } from './controllers/TransactionsController.ts';
+import { sequelizeInstance } from './db/sequelizeInstance.js';
+import { schema } from './schema.js';
+import { CategoriesController } from './controllers/CategoriesController.js';
+import { ProductsController } from './controllers/ProductsController.js';
+import { OrdersController } from './controllers/OrdersController.js';
+import { TransactionsController } from './controllers/TransactionsController.js';
 
 const PORT = 7000
 
