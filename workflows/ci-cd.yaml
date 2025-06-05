@@ -1,0 +1,60 @@
+name: frontend-ci-cd
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        node-version: [ 22 ]
+    steps:
+      - name: Start build
+        run: echo "start build app from branch ${{ secrets.VPS_PASSWORD  }}"
+      - name: Download app repo
+        uses: actions/checkout@v4
+      - name: Install node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install
+      - name: Build app
+        run: npm run build
+      - name: Save dist folder as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-dist
+          path: dist
+      - name: End build
+        run: echo "end build app"
+  # deploy: 
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment: env
+  #   steps:
+  #     - name: Download dist artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: build-dist
+  #         path: dist
+  #     - name: List build output
+  #       run: ls
+  #     - name: Copy files via SSH
+  #       uses: appleboy/scp-action@v1
+  #       with:
+  #         host: ${{ secrets.VPS_IP }}
+  #         username: ${{ secrets.VPS_USERNAME }}
+  #         password: ${{ secrets.VPS_PASSWORD }}
+  #         source: "dist/**"
+  #         target: online-store-backend-gql/
+  #     - name: Deploy app
+  #       uses: victorargento/pm2-deployment@main
+  #       with:
+  #         remote-path: "/deployment/api"
+  #         host: http://89.169.39.119/
+  #         username: ${{ secrets.VPS_USERNAME }}
+  #         port: 7000
+  #         password: ${{ secrets.VPS_PASSWORD }}
+  #         pm2-id: "api"
+
+          
+
