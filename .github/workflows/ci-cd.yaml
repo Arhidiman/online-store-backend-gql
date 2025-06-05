@@ -26,35 +26,27 @@ jobs:
           path: dist
       - name: End build
         run: echo "end build app"
-  # deploy: 
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   environment: env
-  #   steps:
-  #     - name: Download dist artifact
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: build-dist
-  #         path: dist
-  #     - name: List build output
-  #       run: ls
-  #     - name: Copy files via SSH
-  #       uses: appleboy/scp-action@v1
-  #       with:
-  #         host: ${{ secrets.VPS_IP }}
-  #         username: ${{ secrets.VPS_USERNAME }}
-  #         password: ${{ secrets.VPS_PASSWORD }}
-  #         source: "dist/**"
-  #         target: online-store-backend-gql/
-  #     - name: Deploy app
-  #       uses: victorargento/pm2-deployment@main
-  #       with:
-  #         remote-path: "/deployment/api"
-  #         host: http://89.169.39.119/
-  #         username: ${{ secrets.VPS_USERNAME }}
-  #         port: 7000
-  #         password: ${{ secrets.VPS_PASSWORD }}
-  #         pm2-id: "api"
+  deploy: 
+    needs: build
+    runs-on: ubuntu-latest
+    environment: env
+    steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-dist
+          path: dist
+      - name: List build output
+        run: ls
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.VPS_IP }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "dist/**"
+          target: online-store-backend-gql/
+
 
           
 
