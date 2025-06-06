@@ -45,7 +45,7 @@ const createServer = async () => {
     setTimeout(() => {
       console.log(`Try to restart gateway on port: ${PORT}`)
       createServer()
-    }, 2000)
+    }, 5000)
   }
 }
 
