@@ -6,8 +6,8 @@ import http from 'http';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser'
-import { schema } from './schema.js';
-import { userController } from './controllers/UserController.js';
+import { schema } from './schema.ts';
+import { userController } from './controllers/UserController.ts';
 
 const PORT = 8000
 
